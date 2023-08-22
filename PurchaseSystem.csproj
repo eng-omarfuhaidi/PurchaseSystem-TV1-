@@ -494,6 +494,36 @@
   <ItemGroup>
     <None Include="Resources\Delete_50px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\End_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fast Forward_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rewind_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Skip to Start_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Line_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Horizontal Line_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Update_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Update_32px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\System.Text.Json.6.0.1\build\System.Text.Json.targets" Condition="Exists('packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

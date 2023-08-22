@@ -12,9 +12,10 @@ namespace PurchaseSystem.PL
 {
     public partial class PurchaseOrder : Form
     {
-        BL.orderClass order = new BL.orderClass();
+        int Position;
+           BL.orderClass order = new BL.orderClass();
         DataTable Dt = new DataTable();
-        TextBox orderId = new TextBox();
+       // TextBox orderId = new TextBox();
 
 
         void ClearBoxes()
@@ -39,11 +40,36 @@ namespace PurchaseSystem.PL
             txtAccountNumber.Clear();
             ClearBoxes();
             Dt.Clear();
+            combSearch.ResetText();
             dgvProducts.DataSource = null;
             btnAdd.Enabled = false;
             btnNew.Enabled = true;
             btnPrint.Enabled = true;
             button1.Enabled = false;
+        }
+
+
+
+        void ClearDataWhenNewRecord()
+        {
+        
+            txtOrderDesc.Clear();
+            dtOrder.ResetText();
+            txtDeliveryAddress.Clear();
+            txtSuppID.Clear();
+            txtSuppName.Clear();
+            txtSuppAddress.Clear();
+            txtEmail.Clear();
+            txtSuppPhone.Clear();
+            txtAccountNumber.Clear();
+            ClearBoxes();
+          
+            combSearch.ResetText();
+            dgvProducts.DataSource = null;
+          
+            btnNew.Enabled = true;
+            btnPrint.Enabled = true;
+         
         }
 
         void CreateDataTable()
@@ -75,6 +101,13 @@ namespace PurchaseSystem.PL
             CreateDataTable();
            button1.Enabled = false;
             ResizeDGV();
+            btnAdd.Image = PurchaseSystem.Properties.Resources.Save_32px;
+            btnNew.Image= PurchaseSystem.Properties.Resources.Add_New_32px;
+            btnNew.Image = PurchaseSystem.Properties.Resources.Add_New_32px;
+            btnUpdate.Image = PurchaseSystem.Properties.Resources.Update_32px;
+            btnPrint.Image= PurchaseSystem.Properties.Resources.Print_32px;
+            btnClose.Image= PurchaseSystem.Properties.Resources.Cancel_32px;
+
         }
 
        
@@ -126,6 +159,8 @@ namespace PurchaseSystem.PL
             btnNew.Enabled = false;
             btnAdd.Enabled = true;
             button1.Enabled = true;
+             ClearDataWhenNewRecord();
+            
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -170,6 +205,7 @@ namespace PurchaseSystem.PL
                 Dt.Rows.Add(r);
 
                 dgvProducts.DataSource = Dt;
+                ResizeDGV();
                 ClearBoxes();
 
             }
@@ -258,6 +294,114 @@ namespace PurchaseSystem.PL
                 // Cancel editing for other columns
                 e.Cancel = true;
             }
+        }
+
+        private void PurchaseOrder_Load(object sender, EventArgs e)
+        {
+            combSearch.DisplayMember = "ORDERNUMBER";
+            combSearch.ValueMember = "ORDERID";
+            combSearch.DataSource = order.GET_ALL_ORDERS();
+            combSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            combSearch.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+
+
+        }
+
+        private void combSearch_SelectedValueChanged(object sender, EventArgs e)
+        {
+            
+            int oId = Convert.ToInt32(combSearch.SelectedValue);
+            DataTable dataTable = new DataTable();
+            dataTable = order.GET_MAINORDERDETAILS_BYID(oId);
+
+            if (dataTable.Rows.Count == 1)
+            {
+                DataRow row = dataTable.Rows[0];
+
+                orderId.Text = row["orderId"].ToString();
+
+                txtOderNumber.Text = row["orderNumber"].ToString();
+
+                txtOrderDesc.Text = row["orDescription"].ToString();
+
+                txtDeliveryAddress.Text = row["orAddress"].ToString();
+                txtSuppID.Text = row["vId"].ToString();
+                txtSuppName.Text = row["vName"].ToString();
+
+                txtSuppAddress.Text = row["vAddress"].ToString();
+                dtOrder.Value = Convert.ToDateTime(row["orDate"]);
+                txtSuppPhone.Text = row["vPhone"].ToString();
+                txtEmail.Text = row["vEmail"].ToString();
+                txtAccountNumber.Text = row["vAccNumber"].ToString(); 
+            }
+
+         dgvProducts.DataSource = order.GET_ORDERDETAILS_BYID(oId);
+
+        }
+
+        void Navigate(int Index)
+        {
+            try
+            {
+               
+                DataRowCollection DRC= order.GET_ALL_Main_ORDERS_DETAILS().Rows;
+                orderId.Text = DRC[Index][0].ToString();
+                txtOderNumber.Text = DRC[Index][1].ToString();
+                txtOrderDesc.Text = DRC[Index][2].ToString();
+                dtOrder.Value = Convert.ToDateTime(DRC[Index][3]);
+                txtDeliveryAddress.Text = DRC[Index][4].ToString();
+                txtSuppID.Text = DRC[Index][5].ToString();
+                txtSuppName.Text= DRC[Index][6].ToString();
+                txtSuppAddress.Text = DRC[Index][7].ToString();
+                txtSuppPhone.Text = DRC[Index][8].ToString();
+                txtEmail.Text= DRC[Index][9].ToString();
+                txtAccountNumber.Text= DRC[Index][10].ToString();
+            }
+            catch
+            {
+                return;
+            }
+
+        }
+
+        private void pbEnd_Click(object sender, EventArgs e)
+        {
+            Navigate(0);
+        }
+
+        private void pbFirst_Click(object sender, EventArgs e)
+        {
+            Position = order.GET_ALL_Main_ORDERS_DETAILS().Rows.Count - 1;
+            Navigate(Position);
+        }
+
+        private void pbForward_Click(object sender, EventArgs e)
+        {
+            if (Position == 0)
+            {
+                MessageBox.Show("هذا هو أول عنصر");
+                return;
+            }
+            Position -= 1;
+            Navigate(Position);
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+            if (Position == order.GET_ALL_Main_ORDERS_DETAILS().Rows.Count - 1)
+            {
+                MessageBox.Show("هذا هو آخر عنصر");
+                return;
+            }
+            Position += 1;
+            Navigate(Position);
+        }
+
+        private void orderId_TextChanged(object sender, EventArgs e)
+        {
+            dgvProducts.DataSource = order.GET_ORDERDETAILS_BYID(Convert.ToInt32(orderId.Text));
         }
     }
 }

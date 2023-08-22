@@ -205,6 +205,19 @@ namespace PurchaseSystem.BL
             return dt;
         }
 
+        public DataTable GET_ALL_Main_ORDERS_DETAILS()
+        {
+            DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
+            DataTable dt = new DataTable();
+
+            using (OracleDataAdapter reader = DAL.SelectData("AllMainOdersDetails.GET_ALLORDERS", "CUR_ALLORDERS"))
+            {
+                reader.Fill(dt);
+            }
+
+            return dt;
+        }
+
 
         public DataTable GET_ORDERDETAILS_BYID(int orderId)
         {
@@ -248,12 +261,30 @@ namespace PurchaseSystem.BL
         }
 
 
+
+
+
         public DataTable GetSecInviceDetailsBYID(int invoiceId) 
         {
             DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
             DataTable dt = new DataTable();
 
             using (OracleDataAdapter reader = DAL.SelectDataById("GetSecInviceDetailsBYID", "p_invoiceId", "p_cursor", invoiceId))
+            {
+                reader.Fill(dt);
+            }
+
+            return dt;
+        }
+
+
+
+        public DataTable GET_MAINORDERDETAILS_BYID(int invoiceId)
+        {
+            DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
+            DataTable dt = new DataTable();
+
+            using (OracleDataAdapter reader = DAL.SelectDataById("GetMainOrderDetailsBYID", "p_orderId", "p_cursor", invoiceId))
             {
                 reader.Fill(dt);
             }

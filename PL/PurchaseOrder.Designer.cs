@@ -40,6 +40,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
+            this.btnDel = new System.Windows.Forms.DataGridViewButtonColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.حذفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تعديلToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,19 +74,34 @@
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
-            this.btnDel = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.combSearch = new System.Windows.Forms.ComboBox();
+            this.orderId = new System.Windows.Forms.TextBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbFirst = new System.Windows.Forms.PictureBox();
+            this.pbBackward = new System.Windows.Forms.PictureBox();
+            this.pbForward = new System.Windows.Forms.PictureBox();
+            this.pbEnd = new System.Windows.Forms.PictureBox();
+            this.pbSearch = new System.Windows.Forms.PictureBox();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFirst)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBackward)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbForward)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbEnd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
             // 
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClose.ImageKey = "cross.png";
-            this.btnClose.Location = new System.Drawing.Point(426, 12);
+            this.btnClose.Location = new System.Drawing.Point(537, 612);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(71, 29);
             this.btnClose.TabIndex = 24;
@@ -103,6 +119,7 @@
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.dgvProducts);
             this.groupBox3.Controls.Add(this.btnBrowse);
+            this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox3.Location = new System.Drawing.Point(29, 347);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(922, 238);
@@ -193,7 +210,7 @@
             // dgvProducts
             // 
             this.dgvProducts.AllowUserToAddRows = false;
-            this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProducts.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
             this.dgvProducts.ColumnHeadersVisible = false;
             this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnDel});
@@ -210,6 +227,13 @@
             this.dgvProducts.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvProducts_CellBeginEdit);
             this.dgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
             this.dgvProducts.DoubleClick += new System.EventHandler(this.dgvProducts_DoubleClick);
+            // 
+            // btnDel
+            // 
+            this.btnDel.HeaderText = "عمليات";
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Text = "حذف";
+            this.btnDel.UseColumnTextForButtonValue = true;
             // 
             // contextMenuStrip1
             // 
@@ -243,6 +267,7 @@
             // 
             // btnBrowse
             // 
+            this.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBrowse.Location = new System.Drawing.Point(725, 46);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(136, 23);
@@ -263,6 +288,7 @@
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtOrderDesc);
             this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(29, 73);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(427, 243);
@@ -372,6 +398,7 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtSuppName);
             this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.Location = new System.Drawing.Point(524, 73);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(427, 243);
@@ -399,9 +426,10 @@
             // 
             // button1
             // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(122, 27);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(48, 23);
+            this.button1.Size = new System.Drawing.Size(48, 20);
             this.button1.TabIndex = 11;
             this.button1.Text = "...";
             this.button1.UseVisualStyleBackColor = true;
@@ -499,9 +527,10 @@
             // 
             // btnPrint
             // 
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPrint.ImageKey = "printer.png";
-            this.btnPrint.Location = new System.Drawing.Point(319, 12);
+            this.btnPrint.Location = new System.Drawing.Point(430, 612);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(101, 29);
             this.btnPrint.TabIndex = 23;
@@ -512,9 +541,10 @@
             // btnAdd
             // 
             this.btnAdd.Enabled = false;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdd.ImageKey = "(none)";
-            this.btnAdd.Location = new System.Drawing.Point(220, 12);
+            this.btnAdd.Location = new System.Drawing.Point(224, 612);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(93, 29);
             this.btnAdd.TabIndex = 22;
@@ -526,10 +556,10 @@
             // btnNew
             // 
             this.btnNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnNew.Image = global::PurchaseSystem.Properties.Resources.Delete_50px;
+            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNew.ImageKey = "add.png";
-            this.btnNew.Location = new System.Drawing.Point(122, 12);
+            this.btnNew.Location = new System.Drawing.Point(126, 612);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(92, 29);
             this.btnNew.TabIndex = 21;
@@ -538,29 +568,131 @@
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
-            // btnDel
+            // combSearch
             // 
-            this.btnDel.HeaderText = "عمليات";
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Text = "حذف";
-            this.btnDel.UseColumnTextForButtonValue = true;
+            this.combSearch.FormattingEnabled = true;
+            this.combSearch.Location = new System.Drawing.Point(90, 24);
+            this.combSearch.Name = "combSearch";
+            this.combSearch.Size = new System.Drawing.Size(250, 21);
+            this.combSearch.TabIndex = 32;
+            this.combSearch.Text = "بحث";
+            this.combSearch.SelectedValueChanged += new System.EventHandler(this.combSearch_SelectedValueChanged);
+            // 
+            // orderId
+            // 
+            this.orderId.Location = new System.Drawing.Point(441, 35);
+            this.orderId.Name = "orderId";
+            this.orderId.ReadOnly = true;
+            this.orderId.Size = new System.Drawing.Size(100, 20);
+            this.orderId.TabIndex = 33;
+            this.orderId.Visible = false;
+            this.orderId.TextChanged += new System.EventHandler(this.orderId_TextChanged);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Image = global::PurchaseSystem.Properties.Resources.Update_32px;
+            this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdate.ImageKey = "printer.png";
+            this.btnUpdate.Location = new System.Drawing.Point(323, 612);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(101, 29);
+            this.btnUpdate.TabIndex = 35;
+            this.btnUpdate.Text = "تعديل الطلب";
+            this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::PurchaseSystem.Properties.Resources.Horizontal_Line_48px;
+            this.pictureBox1.Location = new System.Drawing.Point(-6, 54);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1145, 18);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 34;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pbFirst
+            // 
+            this.pbFirst.Image = global::PurchaseSystem.Properties.Resources.Skip_to_Start_48px;
+            this.pbFirst.Location = new System.Drawing.Point(816, 16);
+            this.pbFirst.Name = "pbFirst";
+            this.pbFirst.Size = new System.Drawing.Size(25, 29);
+            this.pbFirst.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbFirst.TabIndex = 31;
+            this.pbFirst.TabStop = false;
+            this.pbFirst.Click += new System.EventHandler(this.pbFirst_Click);
+            // 
+            // pbBackward
+            // 
+            this.pbBackward.Image = global::PurchaseSystem.Properties.Resources.Rewind_48px;
+            this.pbBackward.Location = new System.Drawing.Point(767, 16);
+            this.pbBackward.Name = "pbBackward";
+            this.pbBackward.Size = new System.Drawing.Size(25, 29);
+            this.pbBackward.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbBackward.TabIndex = 30;
+            this.pbBackward.TabStop = false;
+            this.pbBackward.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // pbForward
+            // 
+            this.pbForward.Image = global::PurchaseSystem.Properties.Resources.Fast_Forward_48px;
+            this.pbForward.Location = new System.Drawing.Point(697, 16);
+            this.pbForward.Name = "pbForward";
+            this.pbForward.Size = new System.Drawing.Size(25, 29);
+            this.pbForward.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbForward.TabIndex = 29;
+            this.pbForward.TabStop = false;
+            this.pbForward.Click += new System.EventHandler(this.pbForward_Click);
+            // 
+            // pbEnd
+            // 
+            this.pbEnd.Image = global::PurchaseSystem.Properties.Resources.End_48px;
+            this.pbEnd.Location = new System.Drawing.Point(648, 16);
+            this.pbEnd.Name = "pbEnd";
+            this.pbEnd.Size = new System.Drawing.Size(25, 29);
+            this.pbEnd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbEnd.TabIndex = 28;
+            this.pbEnd.TabStop = false;
+            this.pbEnd.Click += new System.EventHandler(this.pbEnd_Click);
+            // 
+            // pbSearch
+            // 
+            this.pbSearch.Image = global::PurchaseSystem.Properties.Resources.Search_50px;
+            this.pbSearch.Location = new System.Drawing.Point(365, 24);
+            this.pbSearch.Name = "pbSearch";
+            this.pbSearch.Size = new System.Drawing.Size(24, 21);
+            this.pbSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSearch.TabIndex = 27;
+            this.pbSearch.TabStop = false;
             // 
             // PurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
             this.ClientSize = new System.Drawing.Size(1151, 704);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.orderId);
+            this.Controls.Add(this.combSearch);
+            this.Controls.Add(this.pbFirst);
+            this.Controls.Add(this.pbBackward);
+            this.Controls.Add(this.pbForward);
+            this.Controls.Add(this.pbEnd);
+            this.Controls.Add(this.pbSearch);
             this.Controls.Add(this.btnNew);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnPrint);
-            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.btnPrint);
+            this.Controls.Add(this.btnAdd);
             this.Name = "PurchaseOrder";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.Text = "اضافة طلب شراء";
+            this.Load += new System.EventHandler(this.PurchaseOrder_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
@@ -569,7 +701,14 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFirst)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBackward)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbForward)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbEnd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSearch)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -619,5 +758,14 @@
         private System.Windows.Forms.ToolStripMenuItem تعديلToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem حذفالكلToolStripMenuItem;
         private System.Windows.Forms.DataGridViewButtonColumn btnDel;
+        private System.Windows.Forms.PictureBox pbSearch;
+        private System.Windows.Forms.PictureBox pbEnd;
+        private System.Windows.Forms.PictureBox pbForward;
+        private System.Windows.Forms.PictureBox pbBackward;
+        private System.Windows.Forms.PictureBox pbFirst;
+        private System.Windows.Forms.ComboBox combSearch;
+        private System.Windows.Forms.TextBox orderId;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
