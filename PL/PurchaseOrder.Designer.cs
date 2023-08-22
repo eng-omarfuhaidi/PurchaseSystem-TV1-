@@ -32,20 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtQty = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtIDproduct = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtNameProduct = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.btnDel = new System.Windows.Forms.DataGridViewButtonColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.حذفToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تعديلToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.حذفالكلToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnBrowse = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtSystemUser = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -106,19 +98,12 @@
             this.btnClose.Size = new System.Drawing.Size(71, 29);
             this.btnClose.TabIndex = 24;
             this.btnClose.Text = "خروج";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.txtQty);
-            this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.txtIDproduct);
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.txtNameProduct);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.dgvProducts);
-            this.groupBox3.Controls.Add(this.btnBrowse);
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox3.Location = new System.Drawing.Point(29, 347);
             this.groupBox3.Name = "groupBox3";
@@ -127,109 +112,30 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "بنود الطلب";
             // 
-            // txtQty
-            // 
-            this.txtQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtQty.Location = new System.Drawing.Point(339, 49);
-            this.txtQty.MaxLength = 8;
-            this.txtQty.Name = "txtQty";
-            this.txtQty.Size = new System.Drawing.Size(93, 20);
-            this.txtQty.TabIndex = 27;
-            this.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQty_KeyDown);
-            this.txtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQty_KeyPress);
-            // 
-            // label13
-            // 
-            this.label13.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label13.Location = new System.Drawing.Point(339, 23);
-            this.label13.Name = "label13";
-            this.label13.Padding = new System.Windows.Forms.Padding(3);
-            this.label13.Size = new System.Drawing.Size(93, 27);
-            this.label13.TabIndex = 28;
-            this.label13.Text = "الكمية";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtIDproduct
-            // 
-            this.txtIDproduct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtIDproduct.Location = new System.Drawing.Point(627, 49);
-            this.txtIDproduct.Name = "txtIDproduct";
-            this.txtIDproduct.ReadOnly = true;
-            this.txtIDproduct.Size = new System.Drawing.Size(99, 20);
-            this.txtIDproduct.TabIndex = 1;
-            this.txtIDproduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label18
-            // 
-            this.label18.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label18.Location = new System.Drawing.Point(725, 23);
-            this.label18.Name = "label18";
-            this.label18.Padding = new System.Windows.Forms.Padding(3);
-            this.label18.Size = new System.Drawing.Size(135, 27);
-            this.label18.TabIndex = 24;
-            this.label18.Text = "اختيار";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtNameProduct
-            // 
-            this.txtNameProduct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNameProduct.Location = new System.Drawing.Point(429, 49);
-            this.txtNameProduct.Name = "txtNameProduct";
-            this.txtNameProduct.ReadOnly = true;
-            this.txtNameProduct.Size = new System.Drawing.Size(199, 20);
-            this.txtNameProduct.TabIndex = 2;
-            this.txtNameProduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label12.Location = new System.Drawing.Point(429, 23);
-            this.label12.Name = "label12";
-            this.label12.Padding = new System.Windows.Forms.Padding(3);
-            this.label12.Size = new System.Drawing.Size(199, 27);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "اسم المادة";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label11
-            // 
-            this.label11.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label11.Location = new System.Drawing.Point(627, 23);
-            this.label11.Name = "label11";
-            this.label11.Padding = new System.Windows.Forms.Padding(3);
-            this.label11.Size = new System.Drawing.Size(99, 27);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "معرف المادة";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // dgvProducts
             // 
-            this.dgvProducts.AllowUserToAddRows = false;
+            this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProducts.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
-            this.dgvProducts.ColumnHeadersVisible = false;
             this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnDel});
             this.dgvProducts.ContextMenuStrip = this.contextMenuStrip1;
-            this.dgvProducts.Location = new System.Drawing.Point(339, 78);
+            this.dgvProducts.Location = new System.Drawing.Point(89, 19);
             this.dgvProducts.MultiSelect = false;
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.RowHeadersWidth = 86;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvProducts.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(521, 109);
+            this.dgvProducts.Size = new System.Drawing.Size(771, 213);
             this.dgvProducts.TabIndex = 2;
             this.dgvProducts.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvProducts_CellBeginEdit);
             this.dgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
-            this.dgvProducts.DoubleClick += new System.EventHandler(this.dgvProducts_DoubleClick);
+            this.dgvProducts.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvProducts_EditingControlShowing);
+      
             // 
             // btnDel
             // 
+            this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDel.HeaderText = "عمليات";
             this.btnDel.Name = "btnDel";
             this.btnDel.Text = "حذف";
@@ -264,17 +170,6 @@
             this.حذفالكلToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.حذفالكلToolStripMenuItem.Text = "حذف الكل";
             this.حذفالكلToolStripMenuItem.Click += new System.EventHandler(this.حذفالكلToolStripMenuItem_Click);
-            // 
-            // btnBrowse
-            // 
-            this.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBrowse.Location = new System.Drawing.Point(725, 46);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(136, 23);
-            this.btnBrowse.TabIndex = 0;
-            this.btnBrowse.Text = "...";
-            this.btnBrowse.UseVisualStyleBackColor = true;
-            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // groupBox1
             // 
@@ -591,7 +486,6 @@
             // btnUpdate
             // 
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Image = global::PurchaseSystem.Properties.Resources.Update_32px;
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUpdate.ImageKey = "printer.png";
             this.btnUpdate.Location = new System.Drawing.Point(323, 612);
@@ -601,6 +495,7 @@
             this.btnUpdate.Text = "تعديل الطلب";
             this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // pictureBox1
             // 
@@ -694,7 +589,6 @@
             this.Text = "اضافة طلب شراء";
             this.Load += new System.EventHandler(this.PurchaseOrder_Load);
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -719,12 +613,6 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtIDproduct;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox txtNameProduct;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DateTimePicker dtOrder;
         private System.Windows.Forms.TextBox txtOderNumber;
@@ -750,14 +638,10 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtSystemUser;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtQty;
-        private System.Windows.Forms.Label label13;
-        public System.Windows.Forms.DataGridView dgvProducts;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem حذفToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem تعديلToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem حذفالكلToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewButtonColumn btnDel;
         private System.Windows.Forms.PictureBox pbSearch;
         private System.Windows.Forms.PictureBox pbEnd;
         private System.Windows.Forms.PictureBox pbForward;
@@ -767,5 +651,7 @@
         private System.Windows.Forms.TextBox orderId;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnUpdate;
+        public System.Windows.Forms.DataGridView dgvProducts;
+        private System.Windows.Forms.DataGridViewButtonColumn btnDel;
     }
 }

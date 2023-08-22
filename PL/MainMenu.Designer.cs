@@ -468,7 +468,7 @@ namespace PurchaseSystem.PL
             this.tabControl1.RightToLeftLayout = true;
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.ShowToolTips = true;
-            this.tabControl1.Size = new System.Drawing.Size(1197, 743);
+            this.tabControl1.Size = new System.Drawing.Size(1211, 743);
             this.tabControl1.TabIndex = 1;
             // 
             // MainMenu

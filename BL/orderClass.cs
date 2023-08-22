@@ -292,5 +292,61 @@ namespace PurchaseSystem.BL
             return dt;
         }
 
+        public void UPDATE_PURCHASEORDER_UPDATEBTN(int vendorId, DateTime orderDate,string deliveryAddress,string description,int orderId)
+        {
+            DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
+            DAL.Open();
+            OracleParameter[] param = new OracleParameter[5];
+
+            param[0] = new OracleParameter("v_vendorId", OracleDbType.Int32);
+            param[0].Value = vendorId;
+
+            param[1] = new OracleParameter("v_orderDate", OracleDbType.Date);
+            param[1].Value = orderDate;
+
+
+            param[2] = new OracleParameter("v_deliveryAddress", OracleDbType.Varchar2);
+            param[2].Value = deliveryAddress;
+
+
+            param[3] = new OracleParameter("v_description", OracleDbType.Varchar2);
+            param[3].Value = description;
+
+
+            param[4] = new OracleParameter("v_orderId", OracleDbType.Int32);
+            param[4].Value = orderId;
+
+            DAL.ExecuteCommand("EDITE_PURCHASEORDER_UPDATEBTN", param);
+            DAL.Close();
+
+        }
+
+
+        public void UPDATE_ORDERLINE_UPDATEBTN(int productId, int  qty,  int lineId)
+        {
+            DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
+            DAL.Open();
+            OracleParameter[] param = new OracleParameter[3];
+
+            param[0] = new OracleParameter("v_productId", OracleDbType.Int32);
+            param[0].Value = productId;
+
+            param[1] = new OracleParameter("v_quantity", OracleDbType.Int32);
+            param[1].Value = qty;
+
+
+            param[2] = new OracleParameter("v_lineId", OracleDbType.Int32);
+            param[2].Value = lineId;
+
+
+
+            DAL.ExecuteCommand("EDITE_ORDERLINE_UPDATEBTN", param);
+            DAL.Close();
+
+        }
+
+
+
+
     }
 }

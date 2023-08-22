@@ -96,7 +96,12 @@ namespace PurchaseSystem.PL
             InitializeComponent();
             CreateDataTable();
             ResizeDGV();
-
+            btnAdd.Image = PurchaseSystem.Properties.Resources.Save_32px;
+            btnNew.Image = PurchaseSystem.Properties.Resources.Add_New_32px;
+            btnNew.Image = PurchaseSystem.Properties.Resources.Add_New_32px;
+          //  btnUpdate.Image = PurchaseSystem.Properties.Resources.Update_32px;
+            btnPrint.Image = PurchaseSystem.Properties.Resources.Print_32px;
+            btnClose.Image = PurchaseSystem.Properties.Resources.Cancel_32px;
             btnSelectOrder.Enabled = false;
         }
 

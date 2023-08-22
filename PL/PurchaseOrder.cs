@@ -15,16 +15,10 @@ namespace PurchaseSystem.PL
         int Position;
            BL.orderClass order = new BL.orderClass();
         DataTable Dt = new DataTable();
-       // TextBox orderId = new TextBox();
+ 
 
 
-        void ClearBoxes()
-        {
-            txtIDproduct.Clear();
-            txtNameProduct.Clear();
-            txtQty.Clear();
-            btnBrowse.Focus();
-        }
+     
 
         void ClearData()
         {
@@ -38,7 +32,7 @@ namespace PurchaseSystem.PL
             txtEmail.Clear();
             txtSuppPhone.Clear();
             txtAccountNumber.Clear();
-            ClearBoxes();
+       
             Dt.Clear();
             combSearch.ResetText();
             dgvProducts.DataSource = null;
@@ -62,45 +56,27 @@ namespace PurchaseSystem.PL
             txtEmail.Clear();
             txtSuppPhone.Clear();
             txtAccountNumber.Clear();
-            ClearBoxes();
           
             combSearch.ResetText();
-            dgvProducts.DataSource = null;
+          
           
             btnNew.Enabled = true;
             btnPrint.Enabled = true;
          
         }
 
-        void CreateDataTable()
-        {
-            Dt.Columns.Add("معرف المادة");
-            Dt.Columns.Add("اسم المادة");
-            Dt.Columns.Add("الكمية");
-
-            dgvProducts.DataSource = Dt;
-        }
+     
 
 
-        void ResizeDGV()
-        {
-            //  this.dgvProducts.ColumnCount = 4;
-            // this.dgvProducts.RowHeadersWidth = 86;
-            this.dgvProducts.Columns[0].Width = 40;
-            this.dgvProducts.Columns[1].Width = 99;
-            this.dgvProducts.Columns[2].Width = 199;
-            this.dgvProducts.Columns[3].Width = 93;
-         
-
-        }
+    
 
 
         public PurchaseOrder()
         {
             InitializeComponent();
-            CreateDataTable();
-           button1.Enabled = false;
-            ResizeDGV();
+     
+           
+     
             btnAdd.Image = PurchaseSystem.Properties.Resources.Save_32px;
             btnNew.Image= PurchaseSystem.Properties.Resources.Add_New_32px;
             btnNew.Image = PurchaseSystem.Properties.Resources.Add_New_32px;
@@ -124,10 +100,10 @@ namespace PurchaseSystem.PL
             order.ADD_ORDER(Convert.ToInt32(txtSuppID.Text),Convert.ToInt32(txtOderNumber.Text) , dtOrder.Value,txtDeliveryAddress.Text,txtOrderDesc.Text);
 
             //إضافة المنتجات المدخلة
-            for (int i = 0; i < dgvProducts.Rows.Count; i++)
+            for (int i = 0; i < dgvProducts.Rows.Count-1; i++)
             {
-                order.ADD_ORDERITEM(Convert.ToInt32(orderId.Text), Convert.ToInt32(dgvProducts.Rows[i].Cells[1].Value),
-                                    Convert.ToInt32(dgvProducts.Rows[i].Cells[3].Value));
+                order.ADD_ORDERITEM(Convert.ToInt32(orderId.Text), Convert.ToInt32(dgvProducts.Rows[i].Cells[2].Value),
+                                    Convert.ToInt32(dgvProducts.Rows[i].Cells[4].Value));
 
 
             }
@@ -163,15 +139,7 @@ namespace PurchaseSystem.PL
             
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
-        {
-            ClearBoxes();
-            ProductsList frm = new ProductsList();
-            frm.ShowDialog();
-            txtIDproduct.Text = frm.dgvProducts.CurrentRow.Cells[0].Value.ToString();
-            txtNameProduct.Text = frm.dgvProducts.CurrentRow.Cells[1].Value.ToString();
-            btnBrowse.Focus();
-        }
+  
 
         private void txtQty_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -181,51 +149,9 @@ namespace PurchaseSystem.PL
             }
         }
 
-        private void txtQty_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                
+      
 
-                for (int i = 0; i < dgvProducts.Rows.Count ; i++)
-                {
-                    if (dgvProducts.Rows[i].Cells[1].Value.ToString() == txtIDproduct.Text)
-                    {
-                        MessageBox.Show("هذا المنتج تم إدخاله مسبقا", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        return;
-                    }
-
-                }
-
-                DataRow r = Dt.NewRow();
-                r[0] = txtIDproduct.Text;
-                r[1] = txtNameProduct.Text;
-                r[2] = txtQty.Text;
-
-                Dt.Rows.Add(r);
-
-                dgvProducts.DataSource = Dt;
-                ResizeDGV();
-                ClearBoxes();
-
-            }
-        }
-
-        private void dgvProducts_DoubleClick(object sender, EventArgs e)
-        {
-            try
-            {
-                txtIDproduct.Text = this.dgvProducts.CurrentRow.Cells[1].Value.ToString();
-                txtNameProduct.Text = this.dgvProducts.CurrentRow.Cells[2].Value.ToString();
-                txtQty.Text = this.dgvProducts.CurrentRow.Cells[3].Value.ToString();
-                dgvProducts.Rows.RemoveAt(dgvProducts.CurrentRow.Index);
-                txtQty.Focus();
-            }
-            catch
-            {
-                return;
-            }
-        }
+     
 
         private void حذفToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -279,12 +205,34 @@ namespace PurchaseSystem.PL
                     }
                 }
             }
+
+            if (e.ColumnIndex == 3) 
+            {
+
+                ProductsList frm = new ProductsList();
+                frm.ShowDialog();
+                for (int i = 0; i < this.dgvProducts.Rows.Count-1; i++)
+                {
+                    if (this.dgvProducts.Rows[i].Cells[2].Value.ToString() == frm.dgvProducts.CurrentRow.Cells[0].Value.ToString())
+                    {
+                        MessageBox.Show("هذا المنتج تم إدخاله مسبقا", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+
+                }
+
+                this.dgvProducts.CurrentRow.Cells[2].Value = frm.dgvProducts.CurrentRow.Cells[0].Value.ToString();
+                this.dgvProducts.CurrentRow.Cells[3].Value = frm.dgvProducts.CurrentRow.Cells[1].Value.ToString();
+               
+            
+
+            }
         }
 
         private void dgvProducts_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             // Check if the cell should be editable
-            if (e.ColumnIndex == 3)
+            if (e.ColumnIndex ==4 )
             {
                 // Allow editing for specific columns (e.g., column index 0 and 2)
                 e.Cancel = false;
@@ -337,6 +285,7 @@ namespace PurchaseSystem.PL
             }
 
          dgvProducts.DataSource = order.GET_ORDERDETAILS_BYID(oId);
+          dgvProducts.Columns["معرف البند"].Visible = false;
 
         }
 
@@ -402,6 +351,62 @@ namespace PurchaseSystem.PL
         private void orderId_TextChanged(object sender, EventArgs e)
         {
             dgvProducts.DataSource = order.GET_ORDERDETAILS_BYID(Convert.ToInt32(orderId.Text));
+            dgvProducts.Columns["معرف البند"].Visible = false;
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (txtSuppID.Text == string.Empty || dgvProducts.Rows.Count < 1 || txtDeliveryAddress.Text == string.Empty)
+            {
+                MessageBox.Show("ينبغي تسجيل المعلومات المهمة", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            //تعديل معلومات الطلب
+            order.UPDATE_PURCHASEORDER_UPDATEBTN(Convert.ToInt32(txtSuppID.Text),dtOrder.Value, txtDeliveryAddress.Text, txtOrderDesc.Text,Convert.ToInt32(orderId.Text));
+
+            //تعديل بنود الطلب
+
+            for (int i = 0; i < dgvProducts.Rows.Count - 1; i++)
+            {
+                if (dgvProducts.Rows[i].Cells[1].Value == null|| dgvProducts.Rows[i].Cells[1].Value == DBNull.Value || String.IsNullOrWhiteSpace(dgvProducts.Rows[i].Cells[1].Value.ToString()))
+                {
+                    order.ADD_ORDERITEM(Convert.ToInt32(orderId.Text), Convert.ToInt32(dgvProducts.Rows[i].Cells[2].Value),
+                                      Convert.ToInt32(dgvProducts.Rows[i].Cells[4].Value));
+
+                }
+                else if (dgvProducts.Rows[i].Cells[1].Value != null || dgvProducts.Rows[i].Cells[1].Value != DBNull.Value )
+                {
+                    order.UPDATE_ORDERLINE_UPDATEBTN(Convert.ToInt32(dgvProducts.Rows[i].Cells[2].Value), Convert.ToInt32(dgvProducts.Rows[i].Cells[4].Value),
+                                         Convert.ToInt32(dgvProducts.Rows[i].Cells[1].Value));
+                }
+
+
+            }
+
+
+            MessageBox.Show("تمت عملية التعديل بنجاح", "عملية التعديل", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ClearData();
+        }
+
+        private void dgvProducts_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(Column1_KeyPress);
+            if (dgvProducts.CurrentCell.ColumnIndex == 4) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Column1_KeyPress);
+                }
+            }
+        }
+        private void Column1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

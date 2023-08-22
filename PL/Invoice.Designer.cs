@@ -29,7 +29,7 @@ namespace PurchaseSystem.PL
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtvendorInvoiceNumebr = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -84,11 +84,24 @@ namespace PurchaseSystem.PL
             this.label7 = new System.Windows.Forms.Label();
             this.dgvInvoice = new System.Windows.Forms.DataGridView();
             this.btnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.combSearch = new System.Windows.Forms.ComboBox();
+            this.pbFirst = new System.Windows.Forms.PictureBox();
+            this.pbBackward = new System.Windows.Forms.PictureBox();
+            this.pbForward = new System.Windows.Forms.PictureBox();
+            this.pbEnd = new System.Windows.Forms.PictureBox();
+            this.pbSearch = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFirst)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBackward)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbForward)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbEnd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -298,6 +311,7 @@ namespace PurchaseSystem.PL
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(22, 65);
             this.dataGridView1.MultiSelect = false;
@@ -401,6 +415,7 @@ namespace PurchaseSystem.PL
             // 
             // btnSelectOrder
             // 
+            this.btnSelectOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSelectOrder.Location = new System.Drawing.Point(512, 32);
             this.btnSelectOrder.Name = "btnSelectOrder";
             this.btnSelectOrder.Size = new System.Drawing.Size(48, 23);
@@ -411,49 +426,57 @@ namespace PurchaseSystem.PL
             // 
             // btnClose
             // 
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClose.ImageKey = "cross.png";
-            this.btnClose.Location = new System.Drawing.Point(514, 12);
+            this.btnClose.Location = new System.Drawing.Point(657, 589);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(90, 31);
             this.btnClose.TabIndex = 31;
             this.btnClose.Text = "خروج";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnPrint
             // 
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPrint.ImageKey = "printer.png";
-            this.btnPrint.Location = new System.Drawing.Point(383, 12);
+            this.btnPrint.Location = new System.Drawing.Point(526, 589);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(125, 31);
             this.btnPrint.TabIndex = 30;
             this.btnPrint.Text = "طباعة الفاتورة";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPrint.UseVisualStyleBackColor = true;
             // 
             // btnAdd
             // 
             this.btnAdd.Enabled = false;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdd.ImageKey = "disk.png";
-            this.btnAdd.Location = new System.Drawing.Point(255, 12);
+            this.btnAdd.Location = new System.Drawing.Point(398, 589);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(125, 31);
             this.btnAdd.TabIndex = 29;
             this.btnAdd.Text = "حفظ الفاتورة";
+            this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnNew
             // 
+            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNew.ImageKey = "(none)";
-            this.btnNew.Location = new System.Drawing.Point(124, 12);
+            this.btnNew.Location = new System.Drawing.Point(267, 589);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(125, 31);
             this.btnNew.TabIndex = 28;
             this.btnNew.Text = "فاتورة جديدة";
+            this.btnNew.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
@@ -507,8 +530,9 @@ namespace PurchaseSystem.PL
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.DimGray;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
             this.label1.Location = new System.Drawing.Point(717, 51);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(3);
@@ -528,8 +552,9 @@ namespace PurchaseSystem.PL
             // 
             // label18
             // 
-            this.label18.BackColor = System.Drawing.Color.DimGray;
+            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
             this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
             this.label18.Location = new System.Drawing.Point(717, 26);
             this.label18.Name = "label18";
             this.label18.Padding = new System.Windows.Forms.Padding(3);
@@ -663,17 +688,18 @@ namespace PurchaseSystem.PL
             // dgvInvoice
             // 
             this.dgvInvoice.AllowUserToAddRows = false;
+            this.dgvInvoice.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
             this.dgvInvoice.ColumnHeadersVisible = false;
             this.dgvInvoice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnDelete});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInvoice.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInvoice.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvInvoice.Location = new System.Drawing.Point(26, 81);
             this.dgvInvoice.MultiSelect = false;
             this.dgvInvoice.Name = "dgvInvoice";
@@ -695,18 +721,100 @@ namespace PurchaseSystem.PL
             this.btnDelete.ToolTipText = "حذف";
             this.btnDelete.UseColumnTextForButtonValue = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::PurchaseSystem.Properties.Resources.Horizontal_Line_48px;
+            this.pictureBox1.Location = new System.Drawing.Point(42, 50);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1145, 18);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
+            // 
+            // combSearch
+            // 
+            this.combSearch.FormattingEnabled = true;
+            this.combSearch.Location = new System.Drawing.Point(138, 20);
+            this.combSearch.Name = "combSearch";
+            this.combSearch.Size = new System.Drawing.Size(250, 21);
+            this.combSearch.TabIndex = 40;
+            this.combSearch.Text = "بحث";
+            // 
+            // pbFirst
+            // 
+            this.pbFirst.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbFirst.Image = global::PurchaseSystem.Properties.Resources.Skip_to_Start_48px;
+            this.pbFirst.Location = new System.Drawing.Point(864, 12);
+            this.pbFirst.Name = "pbFirst";
+            this.pbFirst.Size = new System.Drawing.Size(25, 29);
+            this.pbFirst.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbFirst.TabIndex = 39;
+            this.pbFirst.TabStop = false;
+            // 
+            // pbBackward
+            // 
+            this.pbBackward.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbBackward.Image = global::PurchaseSystem.Properties.Resources.Rewind_48px;
+            this.pbBackward.Location = new System.Drawing.Point(815, 12);
+            this.pbBackward.Name = "pbBackward";
+            this.pbBackward.Size = new System.Drawing.Size(25, 29);
+            this.pbBackward.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbBackward.TabIndex = 38;
+            this.pbBackward.TabStop = false;
+            // 
+            // pbForward
+            // 
+            this.pbForward.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbForward.Image = global::PurchaseSystem.Properties.Resources.Fast_Forward_48px;
+            this.pbForward.Location = new System.Drawing.Point(745, 12);
+            this.pbForward.Name = "pbForward";
+            this.pbForward.Size = new System.Drawing.Size(25, 29);
+            this.pbForward.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbForward.TabIndex = 37;
+            this.pbForward.TabStop = false;
+            // 
+            // pbEnd
+            // 
+            this.pbEnd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbEnd.Image = global::PurchaseSystem.Properties.Resources.End_48px;
+            this.pbEnd.Location = new System.Drawing.Point(696, 12);
+            this.pbEnd.Name = "pbEnd";
+            this.pbEnd.Size = new System.Drawing.Size(25, 29);
+            this.pbEnd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbEnd.TabIndex = 36;
+            this.pbEnd.TabStop = false;
+            // 
+            // pbSearch
+            // 
+            this.pbSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbSearch.Image = global::PurchaseSystem.Properties.Resources.Search_50px;
+            this.pbSearch.Location = new System.Drawing.Point(396, 20);
+            this.pbSearch.Name = "pbSearch";
+            this.pbSearch.Size = new System.Drawing.Size(24, 21);
+            this.pbSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSearch.TabIndex = 35;
+            this.pbSearch.TabStop = false;
+            // 
             // Invoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
             this.ClientSize = new System.Drawing.Size(1188, 704);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.combSearch);
+            this.Controls.Add(this.pbFirst);
+            this.Controls.Add(this.pbBackward);
+            this.Controls.Add(this.pbForward);
+            this.Controls.Add(this.pbEnd);
+            this.Controls.Add(this.pbSearch);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnNew);
+            this.Controls.Add(this.btnPrint);
             this.Name = "Invoice";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
@@ -719,6 +827,12 @@ namespace PurchaseSystem.PL
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInvoice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFirst)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBackward)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbForward)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbEnd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSearch)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -778,5 +892,12 @@ namespace PurchaseSystem.PL
         public System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.DataGridViewButtonColumn btnDelete;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox combSearch;
+        private System.Windows.Forms.PictureBox pbFirst;
+        private System.Windows.Forms.PictureBox pbBackward;
+        private System.Windows.Forms.PictureBox pbForward;
+        private System.Windows.Forms.PictureBox pbEnd;
+        private System.Windows.Forms.PictureBox pbSearch;
     }
 }
