@@ -313,6 +313,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="RPT\DataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet3.xsd</DependentUpon>
+    </Compile>
     <Compile Include="RPT\invoiceReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -330,6 +335,12 @@
     </Compile>
     <Compile Include="RPT\ordersReport.Designer.cs">
       <DependentUpon>ordersReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RPT\retReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>retReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="PL\AddProducts.resx">
       <DependentUpon>AddProducts.cs</DependentUpon>
@@ -391,6 +402,10 @@
     <EmbeddedResource Include="RPT\ordersReport.resx">
       <DependentUpon>ordersReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RPT\retReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>retReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -428,6 +443,17 @@
     </None>
     <None Include="RPT\DataSet2.xss">
       <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="RPT\DataSet3.xsc">
+      <DependentUpon>DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="RPT\DataSet3.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet3.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="RPT\DataSet3.xss">
+      <DependentUpon>DataSet3.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -419,5 +419,29 @@ namespace PurchaseSystem.PL
             frm.ShowDialog();
             this.Cursor = Cursors.Default;
         }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (orderId.Text == string.Empty)
+            {
+                MessageBox.Show("اختر طلب لحذفه", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                DialogResult dr = MessageBox.Show("هل تريد حذف الطلب الحالي؟", "تأكيد الحذف", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+
+                if (dr == DialogResult.Yes)
+                {
+                    order.DELETE_ORDER(Convert.ToInt32(orderId.Text));
+
+                    MessageBox.Show("تمت عملية الحذف بنجاح", "عملية الحذف", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearData();
+                }
+               
+            }
+
+         
+        }
     }
 }

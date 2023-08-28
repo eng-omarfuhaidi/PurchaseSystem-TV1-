@@ -631,6 +631,7 @@
             this.buttonDelete.Text = "حذف";
             this.buttonDelete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // PurchaseOrder
             // 

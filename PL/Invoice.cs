@@ -128,14 +128,22 @@ namespace PurchaseSystem.PL
             btnUpdate.Image = PurchaseSystem.Properties.Resources.EditeBtn_32px;
             btnPrint.Image = PurchaseSystem.Properties.Resources.PrintBtn_32px;
             buttonDelete.Image = PurchaseSystem.Properties.Resources.DeleteBtn_32px;
-
+            Fill_ComboSearch();
             //  btnSelectOrder.Enabled = false;
+
+        }
+
+        private void Fill_ComboSearch()
+        {
             combSearch.DisplayMember = "INVOICENUMBER";
             combSearch.ValueMember = "INVOICEID";
             combSearch.DataSource = order.Fill_InvoiceCombo();
             combSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             combSearch.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+
         }
+
 
         private void btnSelectOrder_Click(object sender, EventArgs e)
         {
@@ -166,6 +174,14 @@ namespace PurchaseSystem.PL
 
         private void txtOrderId_TextChanged(object sender, EventArgs e)
         {
+            FillOrderDetails();
+
+
+        }
+
+
+        private void FillOrderDetails() 
+        {
             string inputValue = txtOrderId.Text.Trim();
 
             if (!string.IsNullOrEmpty(inputValue))
@@ -186,6 +202,7 @@ namespace PurchaseSystem.PL
                 dataGridView1.DataSource = null;
             }
         }
+
 
         private void txtQty_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -546,6 +563,31 @@ namespace PurchaseSystem.PL
             frm.crystalReportViewer1.ReportSource = report;
             frm.ShowDialog();
             this.Cursor = Cursors.Default;
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (txtInvoiceId.Text == string.Empty)
+            {
+                MessageBox.Show("اختر فاتورة لحذفها", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                DialogResult dr = MessageBox.Show("هل تريد حذف الفاتورة الحالية؟", "تأكيد الحذف", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+
+                if (dr == DialogResult.Yes)
+                {
+                    order.DELETE_INVOICE(Convert.ToInt32(txtInvoiceId.Text));
+
+                    MessageBox.Show("تمت عملية الحذف بنجاح", "عملية الحذف", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearData();
+                    Fill_ComboSearch();
+                    FillOrderDetails();
+                }
+
+            }
+
         }
     }
 }

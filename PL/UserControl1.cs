@@ -125,10 +125,10 @@ namespace PurchaseSystem.PL
                 return;
             }
 
-            //إضافة معلومات الفاتورة
+            
             order.ADD_RETURN(dtReturn.Value,txtReturnDesc.Text, Convert.ToInt32(txtInvoiceId.Text),Convert.ToDecimal( txtReturnTotal.Text),Convert.ToInt32(txtReurnNumber.Text));
-      
-            //إضافة المنتجات المدخلة
+            order.UPDATE_RETUREDINVOICE(1, Convert.ToInt32(txtInvoiceId.Text));
+           
             for (int i = 0; i < dgInvoice.Rows.Count; i++)
             {
                 if (Convert.ToInt32(dgInvoice.Rows[i].Cells[0].Value) == 1) 
@@ -141,6 +141,19 @@ namespace PurchaseSystem.PL
 
             MessageBox.Show("تمت عملية الحفظ بنجاح", "عملية الحفظ", MessageBoxButtons.OK, MessageBoxIcon.Information);
            ClearData();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            //this.Cursor = Cursors.WaitCursor;
+            //string returnId = order.GET_LAST_RETURN_ID().Rows[0][0].ToString();
+            //int retId = Convert.ToInt32(returnId);
+            //RPT.returnReport report = new RPT.returnReport();
+            //RPT.ordersReport frm = new RPT.ordersReport();
+            //report.SetDataSource(order.GETReturnFORPRINT(retId));
+            //frm.crystalReportViewer1.ReportSource = report;
+            //frm.ShowDialog();
+            //this.Cursor = Cursors.Default;
         }
     }
 }

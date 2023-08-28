@@ -25,6 +25,9 @@ namespace PurchaseSystem.BL
         }
 
 
+     
+
+
         public DataTable GET_RLAST_ORDER_ID()
         {
             DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
@@ -69,7 +72,7 @@ namespace PurchaseSystem.BL
 
 
 
-        public void ADD_ORDER(int vendorId,int orderNumber, DateTime orderDate, string deliveryAddress,
+        public void ADD_ORDER(int vendorId, int orderNumber, DateTime orderDate, string deliveryAddress,
                           string description)
         {
             DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
@@ -85,10 +88,10 @@ namespace PurchaseSystem.BL
             param[2] = new OracleParameter("v_oderDate", OracleDbType.Date);
             param[2].Value = orderDate;
 
-            param[3] = new OracleParameter("v_deliveryAddress", OracleDbType.Varchar2,255);
+            param[3] = new OracleParameter("v_deliveryAddress", OracleDbType.Varchar2, 255);
             param[3].Value = deliveryAddress;
 
-            param[4] = new OracleParameter("v_description", OracleDbType.Varchar2,255);
+            param[4] = new OracleParameter("v_description", OracleDbType.Varchar2, 255);
             param[4].Value = description;
             DAL.ExecuteCommand("INSERT_ORDER", param);
             DAL.Close();
@@ -119,7 +122,7 @@ namespace PurchaseSystem.BL
 
 
 
-        public void ADD_RETURN(DateTime v_returnDate,string v_retDescription, int v_originInvoId,decimal v_totalAmount,int v_returnNumber)
+        public void ADD_RETURN(DateTime v_returnDate, string v_retDescription, int v_originInvoId, decimal v_totalAmount, int v_returnNumber)
         {
             DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
             DAL.Open();
@@ -150,8 +153,8 @@ namespace PurchaseSystem.BL
 
 
 
-        public void ADD_INVOICE(int orderId, int invoiceNumber, DateTime invoiceDate, decimal amount,DateTime dueDAte,string description
-            ,string paymentMethod,string currency,int vendorInvoiceNumber)
+        public void ADD_INVOICE(int orderId, int invoiceNumber, DateTime invoiceDate, decimal amount, DateTime dueDAte, string description
+            , string paymentMethod, string currency, int vendorInvoiceNumber)
         {
             DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
             DAL.Open();
@@ -177,7 +180,7 @@ namespace PurchaseSystem.BL
             param[5] = new OracleParameter("v_description", OracleDbType.Varchar2, 255);
             param[5].Value = description;
 
-            param[6] = new OracleParameter("v_paymentMethod", OracleDbType.Varchar2,20);
+            param[6] = new OracleParameter("v_paymentMethod", OracleDbType.Varchar2, 20);
             param[6].Value = paymentMethod;
 
             param[7] = new OracleParameter("v_currency", OracleDbType.Varchar2, 20);
@@ -221,7 +224,7 @@ namespace PurchaseSystem.BL
 
 
 
-        public void UPDATE_PURCHASEORDER(int status,  int orderId)
+        public void UPDATE_PURCHASEORDER(int status, int orderId)
         {
             DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
             DAL.Open();
@@ -258,7 +261,23 @@ namespace PurchaseSystem.BL
 
         }
 
+        public void UPDATE_RETUREDINVOICE(int status, int invoiceId)
+        {
+            DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
+            DAL.Open();
+            OracleParameter[] param = new OracleParameter[2];
 
+            param[0] = new OracleParameter("v_status", OracleDbType.Int32);
+            param[0].Value = status;
+
+
+            param[1] = new OracleParameter("v_invoiceId", OracleDbType.Int32);
+            param[1].Value = invoiceId;
+
+            DAL.ExecuteCommand("EDITE_RETURNEDINVOICE", param);
+            DAL.Close();
+
+        }
 
 
         public DataTable GET_ALL_ORDERS()
@@ -297,7 +316,7 @@ namespace PurchaseSystem.BL
             {
                 reader.Fill(dt);
             }
-            
+
             return dt;
         }
 
@@ -307,7 +326,7 @@ namespace PurchaseSystem.BL
             DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
             DataTable dt = new DataTable();
 
-            using (OracleDataAdapter reader = DAL.SelectDataById("GetOrderLineData", "p_orderId", "p_cursor",orderId))
+            using (OracleDataAdapter reader = DAL.SelectDataById("GetOrderLineData", "p_orderId", "p_cursor", orderId))
             {
                 reader.Fill(dt);
             }
@@ -342,6 +361,20 @@ namespace PurchaseSystem.BL
             return dt;
         }
 
+        public DataTable GETReturnFORPRINT(int returnId)
+        {
+            DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
+            DataTable dt = new DataTable();
+
+            using (OracleDataAdapter reader = DAL.SelectDataById("GETRETURNFORPRINT", "p_returnId", "p_cursor", returnId))
+            {
+                reader.Fill(dt);
+            }
+
+            return dt;
+        }
+
+
 
         public DataTable Fill_InvoiceCombo()
         {
@@ -374,7 +407,7 @@ namespace PurchaseSystem.BL
 
 
 
-        public DataTable GetSecInviceDetailsBYID(int invoiceId) 
+        public DataTable GetSecInviceDetailsBYID(int invoiceId)
         {
             DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
             DataTable dt = new DataTable();
@@ -402,7 +435,7 @@ namespace PurchaseSystem.BL
             return dt;
         }
 
-        public void UPDATE_PURCHASEORDER_UPDATEBTN(int vendorId, DateTime orderDate,string deliveryAddress,string description,int orderId)
+        public void UPDATE_PURCHASEORDER_UPDATEBTN(int vendorId, DateTime orderDate, string deliveryAddress, string description, int orderId)
         {
             DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
             DAL.Open();
@@ -432,7 +465,7 @@ namespace PurchaseSystem.BL
         }
 
 
-        public void UPDATE_ORDERLINE_UPDATEBTN(int productId, int  qty,  int lineId)
+        public void UPDATE_ORDERLINE_UPDATEBTN(int productId, int qty, int lineId)
         {
             DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
             DAL.Open();
@@ -456,9 +489,9 @@ namespace PurchaseSystem.BL
         }
 
 
-        public void UPDATE_INVOICE_UPDATEBTN(int v_orderId, int v_invoiceNumber, DateTime v_invoiceDate, decimal v_amount,DateTime v_dueDate,
+        public void UPDATE_INVOICE_UPDATEBTN(int v_orderId, int v_invoiceNumber, DateTime v_invoiceDate, decimal v_amount, DateTime v_dueDate,
             string v_description, string v_payementMethod,
-            string v_currency,int v_vendorInvoice, int v_invoiceId)
+            string v_currency, int v_vendorInvoice, int v_invoiceId)
         {
             DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
             DAL.Open();
@@ -504,8 +537,37 @@ namespace PurchaseSystem.BL
 
         }
 
+        public void DELETE_ORDER(int v_orderId)
+        {
+            DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
+            DAL.Open();
+            OracleParameter[] param = new OracleParameter[1];
+
+            param[0] = new OracleParameter("v_orderId", OracleDbType.Int32);
+            param[0].Value = v_orderId;
+            DAL.ExecuteCommand("DELETE_PURCHASESORDER", param);
+            DAL.Close();
 
 
 
+
+        }
+
+
+        public void DELETE_INVOICE(int v_invoiceId)
+        {
+            DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
+            DAL.Open();
+            OracleParameter[] param = new OracleParameter[1];
+
+            param[0] = new OracleParameter("v_invoiceId", OracleDbType.Int32);
+            param[0].Value = v_invoiceId;
+            DAL.ExecuteCommand("DELETE_INVOICE", param);
+            DAL.Close();
+
+
+
+
+        }
     }
 }

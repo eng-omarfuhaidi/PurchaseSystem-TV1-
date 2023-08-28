@@ -530,6 +530,7 @@ namespace PurchaseSystem.PL
             this.btnPrint.Text = "طباعة";
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // label24
             // 
