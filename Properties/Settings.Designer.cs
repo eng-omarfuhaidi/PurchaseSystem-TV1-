@@ -22,5 +22,27 @@ namespace PurchaseSystem.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("TNS_ADMIN=C:\\Users\\omar_\\Oracle\\network\\admin;USER ID=PURCHASE;PASSWORD=purchase;" +
+            "DATA SOURCE=localhost:1521/orcl;PERSIST SECURITY INFO=True")]
+        public string ConnectionString {
+            get {
+                return ((string)(this["ConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("TNS_ADMIN=D:\\app\\db_home\\network\\admin;USER ID=PURCHASES;PASSWORD=Purchase;DATA S" +
+            "OURCE=ORCLPDB")]
+        public string ConnectionString1 {
+            get {
+                return ((string)(this["ConnectionString1"]));
+            }
+        }
     }
 }

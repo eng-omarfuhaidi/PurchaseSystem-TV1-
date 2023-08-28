@@ -36,8 +36,10 @@ namespace PurchaseSystem.PL
             // dgvOrders
             // 
             this.dgvOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOrders.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrders.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvOrders.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvOrders.Location = new System.Drawing.Point(0, 0);
             this.dgvOrders.MultiSelect = false;
             this.dgvOrders.Name = "dgvOrders";
@@ -51,6 +53,7 @@ namespace PurchaseSystem.PL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
             this.ClientSize = new System.Drawing.Size(675, 374);
             this.Controls.Add(this.dgvOrders);
             this.Name = "PurchaseOrderList";

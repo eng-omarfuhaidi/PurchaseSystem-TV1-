@@ -35,7 +35,7 @@ namespace PurchaseSystem.PL
        
             Dt.Clear();
             combSearch.ResetText();
-            dgvProducts.DataSource = null;
+            dgvProducts.DataSource = Dt;
             btnAdd.Enabled = false;
             btnNew.Enabled = true;
             btnPrint.Enabled = true;
@@ -74,15 +74,14 @@ namespace PurchaseSystem.PL
         public PurchaseOrder()
         {
             InitializeComponent();
-     
-           
-     
-            btnAdd.Image = PurchaseSystem.Properties.Resources.Save_32px;
-            btnNew.Image= PurchaseSystem.Properties.Resources.Add_New_32px;
-            btnNew.Image = PurchaseSystem.Properties.Resources.Add_New_32px;
-            btnUpdate.Image = PurchaseSystem.Properties.Resources.Update_32px;
-            btnPrint.Image= PurchaseSystem.Properties.Resources.Print_32px;
-            btnClose.Image= PurchaseSystem.Properties.Resources.Cancel_32px;
+
+
+            btnAdd.Image = PurchaseSystem.Properties.Resources.SaveBtn_32px;
+            btnNew.Image = PurchaseSystem.Properties.Resources.AddBtn_32px;
+            btnClose.Image = PurchaseSystem.Properties.Resources.CancelBtn_32px;
+            btnUpdate.Image = PurchaseSystem.Properties.Resources.EditeBtn_32px;
+            btnPrint.Image = PurchaseSystem.Properties.Resources.PrintBtn_32px;
+            buttonDelete.Image = PurchaseSystem.Properties.Resources.DeleteBtn_32px;
 
         }
 
@@ -386,7 +385,7 @@ namespace PurchaseSystem.PL
 
 
             MessageBox.Show("تمت عملية التعديل بنجاح", "عملية التعديل", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            ClearData();
+            //ClearData();
         }
 
         private void dgvProducts_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -407,6 +406,18 @@ namespace PurchaseSystem.PL
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            int orId = Convert.ToInt32(orderId.Text);
+            RPT.orderReport report = new RPT.orderReport();
+            RPT.ordersReport frm = new RPT.ordersReport();
+            report.SetDataSource(order.GETORDERDETAILSFORPRINT(orId));
+            frm.crystalReportViewer1.ReportSource = report;
+            frm.ShowDialog();
+            this.Cursor = Cursors.Default;
         }
     }
 }

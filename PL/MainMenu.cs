@@ -261,8 +261,20 @@ namespace PurchaseSystem.PL
     
         }
 
-     
+        private void btnRturnInvoice_Click(object sender, EventArgs e)
+        {
+            Return frm = new Return();
+            TabPage tpage = new TabPage();
 
+            tpage.Size = frm.Size;
+            //frm.TopLevel = false;
+            //frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            tpage.Controls.Add(frm);
+            frm.Show();
+            tpage.Text = "مردودات المشتريات";
 
-}
+            OpenTabPage(tpage);
+        }
+    }
 }

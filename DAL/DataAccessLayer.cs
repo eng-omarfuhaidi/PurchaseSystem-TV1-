@@ -4,12 +4,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Oracle.DataAccess.Client;
+using System.Windows.Forms;
+using Oracle.ManagedDataAccess.Client;
 namespace PurchaseSystem.DAL
 {
     class DataAccessLayer
     {
-        private OracleConnection oracleConnection;
+         OracleConnection oracleConnection;
 
         // This Constructor initializes the connection object
         public DataAccessLayer()
@@ -18,9 +19,9 @@ namespace PurchaseSystem.DAL
  // "(SERVICE_NAME = orclpdb)" +
  //" ); User Id=purchase;password=purchase;";
 
-          string connectionString = @" USER ID=PURCHASE;PASSWORD=PURCHASE;DATA SOURCE=localhost:1521/orcl";
+       //   string connectionString = "Data Source = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1522))(CONNECT_DATA = (SERVICE_NAME = orclpdb))); User Id = Purchases; Password = Purchase; ";
            
-            oracleConnection = new OracleConnection(connectionString);
+            oracleConnection = new OracleConnection("Data Source = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1522))(CONNECT_DATA = (SERVICE_NAME = orclpdb))); User Id = Purchases; Password = Purchase; ");
             
         }
 
@@ -30,6 +31,7 @@ namespace PurchaseSystem.DAL
             if (oracleConnection.State != ConnectionState.Open)
             {
                 oracleConnection.Open();
+               
             }
         }
 

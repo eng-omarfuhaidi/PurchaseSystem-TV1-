@@ -20,8 +20,8 @@ namespace PurchaseSystem.PL
         private void vendorList_Load(object sender, EventArgs e)
         {
             this.dgvVendors.DataSource = vendor.GET_ALL_VENDORS();
-            this.dgvVendors.Columns[0].Visible = false;
-            this.dgvVendors.Columns[5].Visible = false;
+            this.dgvVendors.Columns[0].Visible = true;
+           // this.dgvVendors.Columns[5].Visible = true;
 
         }
 

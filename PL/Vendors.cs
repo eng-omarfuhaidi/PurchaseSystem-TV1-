@@ -18,8 +18,16 @@ namespace PurchaseSystem.PL
         {
             InitializeComponent();
             this.dgList.DataSource = vendor.GET_ALL_VENDORS();
-           dgList.Columns[0].Visible = false;
-            //dgList.Columns[5].Visible = false;
+           dgList.Columns[0].Visible =true;
+
+            btnAdd.Image = PurchaseSystem.Properties.Resources.SaveBtn_32px;
+            btnNew.Image = PurchaseSystem.Properties.Resources.AddBtn_32px;
+            btnClose.Image = PurchaseSystem.Properties.Resources.CancelBtn_32px;
+            btnEdit.Image = PurchaseSystem.Properties.Resources.EditeBtn_32px;
+            btnPrint.Image = PurchaseSystem.Properties.Resources.PrintBtn_32px;
+            btnDelete.Image = PurchaseSystem.Properties.Resources.DeleteBtn_32px;
+
+        
         }
 
         private void Reset() 

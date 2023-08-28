@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,6 +52,23 @@ namespace PurchaseSystem.BL
         }
 
 
+        public DataTable GET_LAST_RETURN_ID()
+        {
+            DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
+            DataTable dt = new DataTable();
+
+            using (OracleDataAdapter reader = DAL.SelectData("LAST_RETURN_ID.GET_LAST_RETURN_ID", "CUR_LAST_RETURN_ID"))
+            {
+                reader.Fill(dt);
+            }
+
+            return dt;
+        }
+
+
+
+
+
         public void ADD_ORDER(int vendorId,int orderNumber, DateTime orderDate, string deliveryAddress,
                           string description)
         {
@@ -98,6 +115,39 @@ namespace PurchaseSystem.BL
             DAL.Close();
 
         }
+
+
+
+
+        public void ADD_RETURN(DateTime v_returnDate,string v_retDescription, int v_originInvoId,decimal v_totalAmount,int v_returnNumber)
+        {
+            DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
+            DAL.Open();
+            OracleParameter[] param = new OracleParameter[5];
+
+            param[0] = new OracleParameter(" v_returnDate", OracleDbType.Date);
+            param[0].Value = v_returnDate;
+
+            param[1] = new OracleParameter("v_retDescription", OracleDbType.Varchar2);
+            param[1].Value = v_retDescription;
+
+            param[2] = new OracleParameter("v_originInvoId", OracleDbType.Int32);
+            param[2].Value = v_originInvoId;
+
+            param[3] = new OracleParameter("v_totalAmount", OracleDbType.Decimal);
+            param[3].Value = v_totalAmount;
+
+
+            param[4] = new OracleParameter("v_returnNumber", OracleDbType.Int32);
+            param[4].Value = v_returnNumber;
+
+
+            DAL.ExecuteCommand("INSERT_RETURN", param);
+            DAL.Close();
+
+        }
+
+
 
 
         public void ADD_INVOICE(int orderId, int invoiceNumber, DateTime invoiceDate, decimal amount,DateTime dueDAte,string description
@@ -190,6 +240,25 @@ namespace PurchaseSystem.BL
         }
 
 
+        public void UPDATE_RETUREDINVOICEITEM(int status, int lineItemId)
+        {
+            DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
+            DAL.Open();
+            OracleParameter[] param = new OracleParameter[2];
+
+            param[0] = new OracleParameter("v_status", OracleDbType.Int32);
+            param[0].Value = status;
+
+
+            param[1] = new OracleParameter("v_linId", OracleDbType.Int32);
+            param[1].Value = lineItemId;
+
+            DAL.ExecuteCommand("EDITE_RETURNEDINVOICEITEM", param);
+            DAL.Close();
+
+        }
+
+
 
 
         public DataTable GET_ALL_ORDERS()
@@ -219,12 +288,53 @@ namespace PurchaseSystem.BL
         }
 
 
+        public DataTable GET_ALL_Main_INVOICES_DETAILS()
+        {
+            DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
+            DataTable dt = new DataTable();
+
+            using (OracleDataAdapter reader = DAL.SelectData("AllMainInvoiceDetails.GET_ALLINVOICES", "CUR_ALLINVOICES"))
+            {
+                reader.Fill(dt);
+            }
+            
+            return dt;
+        }
+
+
         public DataTable GET_ORDERDETAILS_BYID(int orderId)
         {
             DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
             DataTable dt = new DataTable();
 
             using (OracleDataAdapter reader = DAL.SelectDataById("GetOrderLineData", "p_orderId", "p_cursor",orderId))
+            {
+                reader.Fill(dt);
+            }
+
+            return dt;
+        }
+
+
+        public DataTable GETINVOICEDETAILSFORPRINT(int invoiceId)
+        {
+            DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
+            DataTable dt = new DataTable();
+
+            using (OracleDataAdapter reader = DAL.SelectDataById("GetInvoiceDetailsForPrint", "p_invoiceId", "p_cursor", invoiceId))
+            {
+                reader.Fill(dt);
+            }
+
+            return dt;
+        }
+
+        public DataTable GETORDERDETAILSFORPRINT(int orderId)
+        {
+            DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
+            DataTable dt = new DataTable();
+
+            using (OracleDataAdapter reader = DAL.SelectDataById("GetOrderDetailsForPrint", "p_orderId", "p_cursor", orderId))
             {
                 reader.Fill(dt);
             }
@@ -341,6 +451,55 @@ namespace PurchaseSystem.BL
 
 
             DAL.ExecuteCommand("EDITE_ORDERLINE_UPDATEBTN", param);
+            DAL.Close();
+
+        }
+
+
+        public void UPDATE_INVOICE_UPDATEBTN(int v_orderId, int v_invoiceNumber, DateTime v_invoiceDate, decimal v_amount,DateTime v_dueDate,
+            string v_description, string v_payementMethod,
+            string v_currency,int v_vendorInvoice, int v_invoiceId)
+        {
+            DAL.DataAccessLayer DAL = new DAL.DataAccessLayer();
+            DAL.Open();
+            OracleParameter[] param = new OracleParameter[10];
+
+            param[0] = new OracleParameter("v_orderId", OracleDbType.Int32);
+            param[0].Value = v_orderId;
+
+            param[1] = new OracleParameter("v_invoiceNumber", OracleDbType.Int32);
+            param[1].Value = v_invoiceNumber;
+
+            param[2] = new OracleParameter("v_invoiceDate", OracleDbType.Date);
+            param[2].Value = v_invoiceDate;
+
+            param[3] = new OracleParameter("v_amount", OracleDbType.Decimal);
+            param[3].Value = v_amount;
+
+            param[4] = new OracleParameter("v_dueDate", OracleDbType.Date);
+            param[4].Value = v_dueDate;
+
+
+            param[5] = new OracleParameter("v_description", OracleDbType.Varchar2);
+            param[5].Value = v_description;
+
+
+            param[6] = new OracleParameter("v_payementMethod", OracleDbType.Varchar2);
+            param[6].Value = v_payementMethod;
+
+            param[7] = new OracleParameter("v_currency", OracleDbType.Varchar2);
+            param[7].Value = v_currency;
+
+            param[8] = new OracleParameter("v_vendorInvoice", OracleDbType.Int32);
+            param[8].Value = v_vendorInvoice;
+
+
+            param[9] = new OracleParameter("v_invoiceId", OracleDbType.Int32);
+            param[9].Value = v_invoiceId;
+
+
+
+            DAL.ExecuteCommand("UPDATE_INVOICE", param);
             DAL.Close();
 
         }

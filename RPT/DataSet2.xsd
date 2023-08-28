@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet2" targetNamespace="http://tempuri.org/DataSet2.xsd" xmlns:mstns="http://tempuri.org/DataSet2.xsd" xmlns="http://tempuri.org/DataSet2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString1 (Settings)" ParameterPrefix=":" PropertyReference="ApplicationSettings.PurchaseSystem.Properties.Settings.GlobalReference.Default.ConnectionString1" Provider="Oracle.ManagedDataAccess.Client" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VGETINVOICEDETAILSFORPRINTTableAdapter" GeneratorDataComponentClassName="VGETINVOICEDETAILSFORPRINTTableAdapter" Name="VGETINVOICEDETAILSFORPRINT" UserDataComponentName="VGETINVOICEDETAILSFORPRINTTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString1 (Settings)" DbObjectName="PURCHASES.VGETINVOICEDETAILSFORPRINT" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT "رقم الفاتورة", "تاريخ الفاتورة", "وصف الفاتورة", "تاريخ الاستحقاق", "اجمالي الفاتورة", "طريقة الدفع", العملة, "رقم فاتورة المورد", "رقم الطلب", "تاريخ الطلب", "اسم المورد", "اسم المادة", "سعر الوحدة", الكمية, "المبلغ الإجمالي" FROM PURCHASES.VGETINVOICEDETAILSFORPRINT</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="رقم الفاتورة" DataSetColumn="رقم الفاتورة" />
+              <Mapping SourceColumn="تاريخ الفاتورة" DataSetColumn="تاريخ الفاتورة" />
+              <Mapping SourceColumn="وصف الفاتورة" DataSetColumn="وصف الفاتورة" />
+              <Mapping SourceColumn="تاريخ الاستحقاق" DataSetColumn="تاريخ الاستحقاق" />
+              <Mapping SourceColumn="اجمالي الفاتورة" DataSetColumn="اجمالي الفاتورة" />
+              <Mapping SourceColumn="طريقة الدفع" DataSetColumn="طريقة الدفع" />
+              <Mapping SourceColumn="العملة" DataSetColumn="العملة" />
+              <Mapping SourceColumn="رقم فاتورة المورد" DataSetColumn="رقم فاتورة المورد" />
+              <Mapping SourceColumn="رقم الطلب" DataSetColumn="رقم الطلب" />
+              <Mapping SourceColumn="تاريخ الطلب" DataSetColumn="تاريخ الطلب" />
+              <Mapping SourceColumn="اسم المورد" DataSetColumn="اسم المورد" />
+              <Mapping SourceColumn="اسم المادة" DataSetColumn="اسم المادة" />
+              <Mapping SourceColumn="سعر الوحدة" DataSetColumn="سعر الوحدة" />
+              <Mapping SourceColumn="الكمية" DataSetColumn="الكمية" />
+              <Mapping SourceColumn="المبلغ الإجمالي" DataSetColumn="المبلغ الإجمالي" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet2" msprop:Generator_UserDSName="DataSet2">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="VGETINVOICEDETAILSFORPRINT" msprop:Generator_TableClassName="VGETINVOICEDETAILSFORPRINTDataTable" msprop:Generator_TableVarName="tableVGETINVOICEDETAILSFORPRINT" msprop:Generator_TablePropName="VGETINVOICEDETAILSFORPRINT" msprop:Generator_RowDeletingName="VGETINVOICEDETAILSFORPRINTRowDeleting" msprop:Generator_RowChangingName="VGETINVOICEDETAILSFORPRINTRowChanging" msprop:Generator_RowEvHandlerName="VGETINVOICEDETAILSFORPRINTRowChangeEventHandler" msprop:Generator_RowDeletedName="VGETINVOICEDETAILSFORPRINTRowDeleted" msprop:Generator_UserTableName="VGETINVOICEDETAILSFORPRINT" msprop:Generator_RowChangedName="VGETINVOICEDETAILSFORPRINTRowChanged" msprop:Generator_RowEvArgName="VGETINVOICEDETAILSFORPRINTRowChangeEvent" msprop:Generator_RowClassName="VGETINVOICEDETAILSFORPRINTRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="رقم_x0020_الفاتورة" msprop:Generator_ColumnVarNameInTable="columnرقم_الفاتورة" msprop:Generator_ColumnPropNameInRow="رقم_الفاتورة" msprop:Generator_ColumnPropNameInTable="رقم_الفاتورةColumn" msprop:Generator_UserColumnName="رقم الفاتورة" type="xs:decimal" />
+              <xs:element name="تاريخ_x0020_الفاتورة" msprop:Generator_ColumnVarNameInTable="columnتاريخ_الفاتورة" msprop:Generator_ColumnPropNameInRow="تاريخ_الفاتورة" msprop:Generator_ColumnPropNameInTable="تاريخ_الفاتورةColumn" msprop:Generator_UserColumnName="تاريخ الفاتورة" type="xs:dateTime" />
+              <xs:element name="وصف_x0020_الفاتورة" msprop:Generator_ColumnVarNameInTable="columnوصف_الفاتورة" msprop:Generator_ColumnPropNameInRow="وصف_الفاتورة" msprop:Generator_ColumnPropNameInTable="وصف_الفاتورةColumn" msprop:Generator_UserColumnName="وصف الفاتورة" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="تاريخ_x0020_الاستحقاق" msprop:Generator_ColumnVarNameInTable="columnتاريخ_الاستحقاق" msprop:Generator_ColumnPropNameInRow="تاريخ_الاستحقاق" msprop:Generator_ColumnPropNameInTable="تاريخ_الاستحقاقColumn" msprop:Generator_UserColumnName="تاريخ الاستحقاق" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="اجمالي_x0020_الفاتورة" msprop:Generator_ColumnVarNameInTable="columnاجمالي_الفاتورة" msprop:Generator_ColumnPropNameInRow="اجمالي_الفاتورة" msprop:Generator_ColumnPropNameInTable="اجمالي_الفاتورةColumn" msprop:Generator_UserColumnName="اجمالي الفاتورة" type="xs:decimal" />
+              <xs:element name="طريقة_x0020_الدفع" msprop:Generator_ColumnVarNameInTable="columnطريقة_الدفع" msprop:Generator_ColumnPropNameInRow="طريقة_الدفع" msprop:Generator_ColumnPropNameInTable="طريقة_الدفعColumn" msprop:Generator_UserColumnName="طريقة الدفع" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="العملة" msprop:Generator_ColumnVarNameInTable="columnالعملة" msprop:Generator_ColumnPropNameInRow="العملة" msprop:Generator_ColumnPropNameInTable="العملةColumn" msprop:Generator_UserColumnName="العملة" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="رقم_x0020_فاتورة_x0020_المورد" msprop:Generator_ColumnVarNameInTable="columnرقم_فاتورة_المورد" msprop:Generator_ColumnPropNameInRow="رقم_فاتورة_المورد" msprop:Generator_ColumnPropNameInTable="رقم_فاتورة_الموردColumn" msprop:Generator_UserColumnName="رقم فاتورة المورد" type="xs:decimal" minOccurs="0" />
+              <xs:element name="رقم_x0020_الطلب" msprop:Generator_ColumnVarNameInTable="columnرقم_الطلب" msprop:Generator_ColumnPropNameInRow="رقم_الطلب" msprop:Generator_ColumnPropNameInTable="رقم_الطلبColumn" msprop:Generator_UserColumnName="رقم الطلب" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="تاريخ_x0020_الطلب" msprop:Generator_ColumnVarNameInTable="columnتاريخ_الطلب" msprop:Generator_ColumnPropNameInRow="تاريخ_الطلب" msprop:Generator_ColumnPropNameInTable="تاريخ_الطلبColumn" msprop:Generator_UserColumnName="تاريخ الطلب" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="اسم_x0020_المورد" msprop:Generator_ColumnVarNameInTable="columnاسم_المورد" msprop:Generator_ColumnPropNameInRow="اسم_المورد" msprop:Generator_ColumnPropNameInTable="اسم_الموردColumn" msprop:Generator_UserColumnName="اسم المورد" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="اسم_x0020_المادة" msprop:Generator_ColumnVarNameInTable="columnاسم_المادة" msprop:Generator_ColumnPropNameInRow="اسم_المادة" msprop:Generator_ColumnPropNameInTable="اسم_المادةColumn" msprop:Generator_UserColumnName="اسم المادة" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="سعر_x0020_الوحدة" msprop:Generator_ColumnVarNameInTable="columnسعر_الوحدة" msprop:Generator_ColumnPropNameInRow="سعر_الوحدة" msprop:Generator_ColumnPropNameInTable="سعر_الوحدةColumn" msprop:Generator_UserColumnName="سعر الوحدة" type="xs:decimal" minOccurs="0" />
+              <xs:element name="الكمية" msprop:Generator_ColumnVarNameInTable="columnالكمية" msprop:Generator_ColumnPropNameInRow="الكمية" msprop:Generator_ColumnPropNameInTable="الكميةColumn" msprop:Generator_UserColumnName="الكمية" type="xs:decimal" minOccurs="0" />
+              <xs:element name="المبلغ_x0020_الإجمالي" msprop:Generator_ColumnVarNameInTable="columnالمبلغ_الإجمالي" msprop:Generator_ColumnPropNameInRow="المبلغ_الإجمالي" msprop:Generator_ColumnPropNameInTable="المبلغ_الإجماليColumn" msprop:Generator_UserColumnName="المبلغ الإجمالي" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

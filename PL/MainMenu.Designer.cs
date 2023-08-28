@@ -43,7 +43,7 @@ namespace PurchaseSystem.PL
             this.btnInitial = new System.Windows.Forms.Button();
             this.operationsContainer = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnRturnInvoice = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.btnInvoice = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -232,27 +232,28 @@ namespace PurchaseSystem.PL
             // 
             // panel8
             // 
-            this.panel8.Controls.Add(this.button3);
+            this.panel8.Controls.Add(this.btnRturnInvoice);
             this.panel8.Location = new System.Drawing.Point(3, 126);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(152, 35);
             this.panel8.TabIndex = 5;
             // 
-            // button3
+            // btnRturnInvoice
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(60)))));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Image = global::PurchaseSystem.Properties.Resources.Return_Purchase_32px;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.Location = new System.Drawing.Point(-3, -5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(181, 47);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "مردودات الشراء";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnRturnInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(60)))));
+            this.btnRturnInvoice.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRturnInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRturnInvoice.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRturnInvoice.ForeColor = System.Drawing.Color.White;
+            this.btnRturnInvoice.Image = global::PurchaseSystem.Properties.Resources.Return_Purchase_32px;
+            this.btnRturnInvoice.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRturnInvoice.Location = new System.Drawing.Point(-3, -5);
+            this.btnRturnInvoice.Name = "btnRturnInvoice";
+            this.btnRturnInvoice.Size = new System.Drawing.Size(181, 47);
+            this.btnRturnInvoice.TabIndex = 2;
+            this.btnRturnInvoice.Text = "مردودات الشراء";
+            this.btnRturnInvoice.UseVisualStyleBackColor = false;
+            this.btnRturnInvoice.Click += new System.EventHandler(this.btnRturnInvoice_Click);
             // 
             // panel9
             // 
@@ -527,7 +528,7 @@ namespace PurchaseSystem.PL
         public System.Windows.Forms.Timer initialTimer;
         private System.Windows.Forms.Panel operationsContainer;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnRturnInvoice;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button btnInvoice;
         private System.Windows.Forms.Panel panel11;

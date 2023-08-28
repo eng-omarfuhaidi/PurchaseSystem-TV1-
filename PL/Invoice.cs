@@ -15,6 +15,7 @@ namespace PurchaseSystem.PL
 {
     public partial class Invoice : Form
     {
+        int Position;
         BL.orderClass order = new BL.orderClass();
         DataTable Dt = new DataTable();
 
@@ -40,6 +41,7 @@ namespace PurchaseSystem.PL
 
         void ClearData()
         {
+          
             txtordernumber.Clear();
             textorderDesc.Clear();
             txtOrderId.Clear();
@@ -48,13 +50,37 @@ namespace PurchaseSystem.PL
             txtInvoiceNumber.Clear();
             txtInvoiceDesc.Clear();
             dtInvoice.ResetText();
-            ddlPyamentMethod.Items.Clear();
+        
             dueDate.ResetText();
             ClearBoxes();
             Dt.Clear();
-            dgvInvoice.DataSource = null;
+            dgvInvoice.DataSource = Dt;
             txtSumTotals.Clear();
             btnAdd.Enabled = false;
+            btnNew.Enabled = true;
+            btnPrint.Enabled = true;
+        }
+
+
+        void ClearDataWhenNew()
+        {
+       
+            txtordernumber.Clear();
+            textorderDesc.Clear();
+            txtOrderId.Clear();
+            dateOrder.ResetText();
+            txtAddress.Clear();
+            combSearch.ResetText();
+            txtInvoiceDesc.Clear();
+            dtInvoice.ResetText();
+            txtvendorInvoiceNumebr.Clear();
+           
+            dueDate.ResetText();
+            ClearBoxes();
+            Dt.Clear();
+            dgvInvoice.DataSource = Dt;
+            txtSumTotals.Clear();
+            btnAdd.Enabled = true;
             btnNew.Enabled = true;
             btnPrint.Enabled = true;
         }
@@ -96,13 +122,19 @@ namespace PurchaseSystem.PL
             InitializeComponent();
             CreateDataTable();
             ResizeDGV();
-            btnAdd.Image = PurchaseSystem.Properties.Resources.Save_32px;
-            btnNew.Image = PurchaseSystem.Properties.Resources.Add_New_32px;
-            btnNew.Image = PurchaseSystem.Properties.Resources.Add_New_32px;
-          //  btnUpdate.Image = PurchaseSystem.Properties.Resources.Update_32px;
-            btnPrint.Image = PurchaseSystem.Properties.Resources.Print_32px;
-            btnClose.Image = PurchaseSystem.Properties.Resources.Cancel_32px;
-            btnSelectOrder.Enabled = false;
+            btnAdd.Image = PurchaseSystem.Properties.Resources.SaveBtn_32px;
+            btnNew.Image = PurchaseSystem.Properties.Resources.AddBtn_32px;
+            btnClose.Image = PurchaseSystem.Properties.Resources.CancelBtn_32px;
+            btnUpdate.Image = PurchaseSystem.Properties.Resources.EditeBtn_32px;
+            btnPrint.Image = PurchaseSystem.Properties.Resources.PrintBtn_32px;
+            buttonDelete.Image = PurchaseSystem.Properties.Resources.DeleteBtn_32px;
+
+            //  btnSelectOrder.Enabled = false;
+            combSearch.DisplayMember = "INVOICENUMBER";
+            combSearch.ValueMember = "INVOICEID";
+            combSearch.DataSource = order.Fill_InvoiceCombo();
+            combSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            combSearch.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
         private void btnSelectOrder_Click(object sender, EventArgs e)
@@ -129,6 +161,7 @@ namespace PurchaseSystem.PL
             btnNew.Enabled = false;
             btnSelectOrder.Enabled = true;
             btnAdd.Enabled = true;
+            ClearDataWhenNew();
         }
 
         private void txtOrderId_TextChanged(object sender, EventArgs e)
@@ -332,7 +365,7 @@ namespace PurchaseSystem.PL
         {
 
             // Check if the cell should be editable
-            if (e.ColumnIndex == 4 || e.ColumnIndex == 5)
+            if (e.ColumnIndex == 4 )
             {
                 // Allow editing for specific columns (e.g., column index 0 and 2)
                 e.Cancel = false;
@@ -346,11 +379,11 @@ namespace PurchaseSystem.PL
 
         private void dgvInvoice_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == 4 || e.ColumnIndex == 5)
+            if (e.RowIndex >= 0 && e.ColumnIndex == 4 )
             {
                 DataGridViewRow row = dgvInvoice.Rows[e.RowIndex];
 
-                if (row.Cells[4].Value != null && row.Cells[5].Value != null)
+                if (row.Cells[4].Value != null )
                 {
                     int value1, value2;
                     if (int.TryParse(row.Cells[4].Value.ToString(), out value1) &&
@@ -373,6 +406,146 @@ namespace PurchaseSystem.PL
         private int CalculateNewValue(int value1, int value2)
         {
             return value1 * value2;
+        }
+
+        private void combSearch_SelectedValueChanged(object sender, EventArgs e)
+        {
+            int invoiceId = Convert.ToInt32(combSearch.SelectedValue);
+            DataTable dataTable = new DataTable();
+            dataTable = order.GET_MAININVOICEDETAILS_BYID(invoiceId);
+
+            if (dataTable.Rows.Count == 1)
+            {
+                DataRow row = dataTable.Rows[0];
+                txtInvoiceId.Text= row["invoiceId"].ToString();
+                txtInvoiceNumber.Text = row["invoNumber"].ToString();
+
+                txtInvoiceDesc.Text = row["invoDescription"].ToString();
+
+                dtInvoice.Value = Convert.ToDateTime(row["invodate"]);
+
+                ddlPyamentMethod.SelectedItem = row["payMethod"].ToString();
+                dueDate.Value = Convert.ToDateTime(row["dudate"]);
+                ddlCurrency.SelectedItem = row["currency"].ToString();
+
+                txtvendorInvoiceNumebr.Text = row["vinvoicenumber"].ToString();
+                txtOrderId.Text = row["orderId"].ToString();
+                txtordernumber.Text = row["ordernumber"].ToString();
+                textorderDesc.Text = row["description"].ToString();
+                dateOrder.Value = Convert.ToDateTime(row["orderDate"]);
+                txtSumTotals.Text= row["amount"].ToString(); 
+            }
+            dgvInvoice.DataSource = order.GetSecInviceDetailsBYID(invoiceId);
+            
+        }
+
+        void Navigate(int Index)
+        {
+            try
+            {
+
+                DataRowCollection DRC = order.GET_ALL_Main_INVOICES_DETAILS().Rows;
+                txtInvoiceId.Text= DRC[Index][0].ToString();
+                txtInvoiceNumber.Text = DRC[Index][1].ToString();
+                txtInvoiceDesc.Text = DRC[Index][2].ToString();
+                dtInvoice.Value = Convert.ToDateTime(DRC[Index][3]);
+                ddlPyamentMethod.Text = DRC[Index][4].ToString();
+                dueDate.Value = Convert.ToDateTime(DRC[Index][5]);
+                ddlCurrency.Text= DRC[Index][6].ToString();
+                txtvendorInvoiceNumebr.Text = DRC[Index][7].ToString();
+                txtOrderId.Text = DRC[Index][8].ToString();
+                txtordernumber.Text = DRC[Index][9].ToString();
+                textorderDesc.Text = DRC[Index][10].ToString();
+                dateOrder.Value= Convert.ToDateTime(DRC[Index][11]);
+                txtAddress.Text= DRC[Index][12].ToString();
+                txtSumTotals.Text= DRC[Index][13].ToString();
+            }
+            catch
+            {
+                return;
+            }
+
+        }
+
+        private void pbEnd_Click(object sender, EventArgs e)
+        {
+            Navigate(0);
+        }
+
+        private void pbFirst_Click(object sender, EventArgs e)
+        {
+            Position = order.GET_ALL_Main_INVOICES_DETAILS().Rows.Count - 1;
+            Navigate(Position);
+        }
+
+        private void pbForward_Click(object sender, EventArgs e)
+        {
+            if (Position == 0)
+            {
+                MessageBox.Show("هذا هو أول عنصر");
+                return;
+            }
+            Position -= 1;
+            Navigate(Position);
+        }
+
+        private void pbBackward_Click(object sender, EventArgs e)
+        {
+            if (Position == order.GET_ALL_Main_INVOICES_DETAILS().Rows.Count - 1)
+            {
+                MessageBox.Show("هذا هو آخر عنصر");
+                return;
+            }
+            Position += 1;
+            Navigate(Position);
+        }
+
+        private void txtInvoiceId_TextChanged(object sender, EventArgs e)
+        {
+            dgvInvoice.DataSource = order.GetSecInviceDetailsBYID(Convert.ToInt32(txtInvoiceId.Text));
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+            if (txtInvoiceNumber.Text == string.Empty || txtOrderId.Text == string.Empty || dgvInvoice.Rows.Count < 1 || txtInvoiceDesc.Text == string.Empty)
+            {
+                MessageBox.Show("ينبغي تسجيل المعلومات المهمة", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+       
+            //تعديل معلومات الفاتورة
+            order.UPDATE_INVOICE_UPDATEBTN(Convert.ToInt32(txtOrderId.Text), Convert.ToInt32(txtInvoiceNumber.Text), dtInvoice.Value, Convert.ToDecimal(txtSumTotals.Text), dueDate.Value, txtInvoiceDesc.Text, ddlPyamentMethod.SelectedItem.ToString(), ddlCurrency.SelectedItem.ToString(), Convert.ToInt32(txtvendorInvoiceNumebr.Text), Convert.ToInt32(txtInvoiceId.Text));
+            order.UPDATE_PURCHASEORDER(1, Convert.ToInt32(txtOrderId.Text));
+            //تعديل بنود الفاتورة
+            for (int i = 0; i < dgvInvoice.Rows.Count; i++)
+            {
+                order.UPDATE_PURCHASEORDERLIINE(Convert.ToInt32(dgvInvoice.Rows[i].Cells[5].Value),
+
+                                        Convert.ToDecimal(dgvInvoice.Rows[i].Cells[4].Value),
+                                       Convert.ToDecimal(dgvInvoice.Rows[i].Cells[6].Value),
+
+                                       Convert.ToInt32(dgvInvoice.Rows[i].Cells[1].Value));
+
+
+            }
+
+            MessageBox.Show("تمت عملية التعديل بنجاح", "عملية التعديل", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    ClearData();
+            
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+        
+            this.Cursor = Cursors.WaitCursor;
+            int invoiceId = Convert.ToInt32(txtInvoiceId.Text);
+            RPT.invoiceReport report = new RPT.invoiceReport();
+            RPT.ordersReport frm = new RPT.ordersReport();
+            report.SetDataSource(order.GETINVOICEDETAILSFORPRINT(invoiceId));
+            frm.crystalReportViewer1.ReportSource = report;
+            frm.ShowDialog();
+            this.Cursor = Cursors.Default;
         }
     }
 }

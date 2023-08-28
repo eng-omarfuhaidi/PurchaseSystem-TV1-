@@ -38,6 +38,7 @@ namespace PurchaseSystem.PL
             this.dgvVendors.AllowUserToAddRows = false;
             this.dgvVendors.AllowUserToDeleteRows = false;
             this.dgvVendors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvVendors.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
             this.dgvVendors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVendors.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvVendors.Location = new System.Drawing.Point(0, 0);
@@ -53,6 +54,7 @@ namespace PurchaseSystem.PL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
             this.ClientSize = new System.Drawing.Size(626, 447);
             this.Controls.Add(this.dgvVendors);
             this.Name = "vendorList";

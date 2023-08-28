@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 namespace PurchaseSystem.PL
 {
     public partial class AddProducts : Form
@@ -18,7 +18,7 @@ namespace PurchaseSystem.PL
         public AddProducts()
         {
             InitializeComponent();
-            using (OracleConnection objConn = new OracleConnection(@" USER ID=PURCHASE;PASSWORD=PURCHASE;DATA SOURCE=localhost:1521/orcl"))
+            using (OracleConnection objConn = new OracleConnection("Data Source = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1522))(CONNECT_DATA = (SERVICE_NAME = orclpdb))); User Id = Purchases; Password = Purchase; "))
             {
                 OracleCommand objCmd = new OracleCommand();
                 objCmd.Connection = objConn;
